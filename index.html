@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <!-- Minimalist Inter font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <main class="auth-wrapper">
+    <!-- Brand Mark -->
+    <div class="brand">
+      <div class="brand-dot"></div>
+      <span class="brand-title">Aura</span>
+    </div>
+
+    <!-- Public Sign Up Form Card -->
+    <div class="auth-card" id="formCard">
+      <header class="auth-header">
+        <h1>Create an account</h1>
+        <p>Enter your details below to get started.</p>
+      </header>
+
+      <!-- Minimal Inline Notice -->
+      <div id="statusNotice" class="notice hidden" role="alert"></div>
+
+      <form id="signupForm" novalidate autocomplete="off">
+        <div class="field">
+          <label for="name">Full Name</label>
+          <input 
+            type="text" 
+            id="name" 
+            placeholder="Jane Doe" 
+            required 
+            autocomplete="name"
+          />
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input 
+            type="email" 
+            id="email" 
+            placeholder="jane@example.com" 
+            required 
+            autocomplete="email"
+          />
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="input-container">
+            <input 
+              type="password" 
+              id="password" 
+              placeholder="••••••••" 
+              required 
+              autocomplete="new-password"
+            />
+            <button type="button" id="togglePass" class="text-toggle" aria-label="Toggle password">Show</button>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">
+          <span>Create account</span>
+        </button>
+      </form>
+
+      <footer class="auth-footer">
+        <span>Already have an account?</span>
+        <a href="#signin">Sign in</a>
+      </footer>
+    </div>
+
+    <!-- Success View for Public Users -->
+    <div class="auth-card hidden" id="successCard">
+      <div class="success-indicator">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+        </svg>
+      </div>
+      <h2 class="success-title">You're on the list!</h2>
+      <p class="success-desc">Your account has been created. We'll be in touch shortly.</p>
+
+      <button type="button" class="secondary-btn" id="newSignupBtn">Register another account</button>
+    </div>
+
+    <!-- Subtle Admin Link (Discreet) -->
+    <div class="page-footer">
+      <a href="./admin.html" class="admin-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+        Admin Portal
+      </a>
+    </div>
+
+  </main>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

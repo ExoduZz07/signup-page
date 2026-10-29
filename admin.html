@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard &bull; Aura</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body class="admin-body">
+
+  <!-- 1. Admin PIN Gate (Shown by default until authenticated) -->
+  <main class="auth-wrapper" id="pinGate">
+    <div class="brand">
+      <div class="brand-dot"></div>
+      <span class="brand-title">Aura Admin</span>
+    </div>
+
+    <div class="auth-card">
+      <header class="auth-header">
+        <div class="lock-icon-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+        </div>
+        <h1>Admin Authentication</h1>
+        <p>Enter the administrator passkey to access the database.</p>
+      </header>
+
+      <div id="pinNotice" class="notice hidden" role="alert"></div>
+
+      <form id="pinForm" autocomplete="off">
+        <div class="field">
+          <label for="adminPin">Admin PIN / Password</label>
+          <input 
+            type="password" 
+            id="adminPin" 
+            placeholder="Enter passkey (default: admin123)" 
+            required 
+            autofocus
+          />
+        </div>
+
+        <button type="submit" class="submit-btn" id="unlockBtn">
+          <span>Unlock Dashboard</span>
+        </button>
+      </form>
+
+      <footer class="auth-footer">
+        <a href="./index.html">&larr; Back to Public Sign Up</a>
+      </footer>
+    </div>
+  </main>
+
+  <!-- 2. Protected Admin Dashboard (Revealed only after correct PIN) -->
+  <div class="admin-dashboard-container hidden" id="dashboardContent">
+    <header class="admin-nav">
+      <div class="nav-left">
+        <div class="brand">
+          <div class="brand-dot"></div>
+          <span class="brand-title">Aura Admin</span>
+        </div>
+        <span class="badge" id="storageBadge">Local DB</span>
+      </div>
+
+      <div class="nav-right">
+        <a href="./index.html" class="nav-link">&larr; Public Page</a>
+        <button type="button" class="pill-btn" id="logoutBtn">Lock Session</button>
+      </div>
+    </header>
+
+    <!-- Top Stats & Controls -->
+    <section class="admin-header-section">
+      <div>
+        <h2>Registered Users</h2>
+        <p class="subtitle" id="statsSubtitle">Showing all signups collected</p>
+      </div>
+
+      <div class="admin-actions">
+        <button type="button" class="pill-btn" id="exportCsvBtn">Export CSV</button>
+        <button type="button" class="pill-btn" id="exportJsonBtn">Export JSON</button>
+        <button type="button" class="pill-btn pill-btn-danger" id="clearAllBtn">Clear All</button>
+      </div>
+    </section>
+
+    <!-- Search & Filter Bar -->
+    <div class="search-bar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/>
+        <path d="m21 21-4.3-4.3"/>
+      </svg>
+      <input type="text" id="searchInput" placeholder="Search by name or email..." />
+    </div>
+
+    <!-- Users Table -->
+    <div class="table-container">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Email Address</th>
+            <th>Signed Up</th>
+            <th class="action-col">Action</th>
+          </tr>
+        </thead>
+        <tbody id="userTableBody">
+          <tr>
+            <td colspan="5" class="empty-state">Loading records...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <script type="module" src="./admin.js"></script>
+</body>
+</html>
